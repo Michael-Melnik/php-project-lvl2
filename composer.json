@@ -1,0 +1,15 @@
+{
+    "name": "hexlet/code",
+    "bin": [
+        "bin/gendiff"
+    ],
+    "description": "php-project-lvl2",
+    "authors": [
+        {
+            "name": "Mikle"
+        }
+    ],
+    "require": {
+        "docopt/docopt": "^1.0"
+    }
+}
