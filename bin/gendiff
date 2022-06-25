@@ -10,6 +10,9 @@ if (file_exists($autoloadPath1)) {
 } else {
     require_once $autoloadPath2;
 }
+use Differ\Differ;
+
+//print_r(Differ\genDiff());
 $doc = <<<DOC
 
 Generate diff.
@@ -25,9 +28,10 @@ Options:
   --format <fmt>            Report format [default: stylish]
 DOC;
 $params = array(
-    'argv'=>array_slice($_SERVER['argv'], 1),
     'help'=>true,
     'version'=>'Generate diff 2.0',
-    'optionsFirst'=>false,
 );
-Docopt::handle($doc, $params);
+$args = Docopt::handle($doc, $params);
+print_r(Differ\genDiff($args['<firstFile>'], $args['<secondFile>']));
+
+
