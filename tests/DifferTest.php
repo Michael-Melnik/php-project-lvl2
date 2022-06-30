@@ -10,7 +10,7 @@ class DifferTest extends TestCase
 {
     public function testGenDiff()
     {
-        $result = join("\n", ["{",
+        $result1 = join("\n", ["{",
             "  - follow: false",
             "    host: hexlet.io",
             "  - proxy: 123.234.53.22",
@@ -18,6 +18,7 @@ class DifferTest extends TestCase
             "  + timeout: 20",
             "  + verbose: true",
             "}"]) . "\n";
-       $this->assertEquals($result, genDiff('file1.json', 'file2.json'));
+        $this->assertEquals($result1, genDiff('file1.json', 'file2.json'));
+        $this->assertEquals($result1, genDiff('file1.yaml', 'file2.yaml'));
     }
 }
