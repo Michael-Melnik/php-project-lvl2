@@ -21,9 +21,11 @@ class DifferTest extends TestCase
         $firstPathYaml = $this->getFilePath('file1.yaml');
         $secondPathYaml = $this->getFilePath('file2.yaml');
         $expectedStylish = trim(file_get_contents($this->getFilePath('resultStylish')));
+        $expectedPlain = trim(file_get_contents($this->getFilePath('resultPlain')));
         $this->assertEquals($expectedStylish, genDiff($firstPathJson, $secondPathJson, 'stylish'));
         $this->assertEquals($expectedStylish, genDiff($firstPathJson, $secondPathJson));
         $this->assertEquals($expectedStylish, genDiff($firstPathYaml, $secondPathYaml, 'stylish'));
         $this->assertEquals($expectedStylish, genDiff($firstPathYaml, $secondPathYaml));
+        $this->assertEquals($expectedPlain, genDiff($firstPathYaml, $secondPathYaml, 'plain'));
     }
 }

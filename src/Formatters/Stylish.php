@@ -1,6 +1,6 @@
 <?php
 
-namespace Differ\Formats\Stylish;
+namespace Differ\Formatters\Stylish;
 
 function format($tree, $depth = 0, $spacesCount = 4): string
 {
