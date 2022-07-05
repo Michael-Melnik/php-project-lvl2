@@ -2,7 +2,6 @@
 
 namespace Differ\Differ;
 
-
 use function Differ\Formatters\formatSelection;
 use function Differ\Parsers\parse;
 
@@ -15,13 +14,13 @@ function genDiff(string $fileName1, string $fileName2, string $format = 'stylish
     return $a;
 }
 
-function compare($data1, $data2) : array
+function compare($data1, $data2): array
 {
     $data1 = (array)$data1;
     $data2 = (array)$data2;
     $keys = array_unique([...array_keys($data1), ...array_keys($data2)]);
     sort($keys);
-    $tree = array_map(function($key) use ($data1, $data2) {
+    $tree = array_map(function ($key) use ($data1, $data2) {
         if (!array_key_exists($key, $data1)) {
             return [
                 'key' => $key,
@@ -36,18 +35,18 @@ function compare($data1, $data2) : array
             ];
         } else {
             if (is_object($data1[$key]) && is_object($data2[$key])) {
-            return [
-                'key' => $key,
-                'type' => 'parent',
-                'children' => compare($data1[$key], $data2[$key])
-            ];
+                return [
+                    'key' => $key,
+                    'type' => 'parent',
+                    'children' => compare($data1[$key], $data2[$key])
+                ];
             } elseif ($data1[$key] === $data2[$key]) {
                 return [
                     'key' => $key,
                     'value' => $data1[$key],
                     'type' => 'unchanged'
                 ];
-            } else{
+            } else {
                 return [
                     'key' => $key,
                     'oldValue' => $data1[$key],
