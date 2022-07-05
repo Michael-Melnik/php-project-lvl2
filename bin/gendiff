@@ -32,6 +32,6 @@ $params = array(
     'version'=>'Generate diff 2.0',
 );
 $args = Docopt::handle($doc, $params);
-print_r(Differ\genDiff($args['<firstFile>'], $args['<secondFile>']));
+print_r(Differ\genDiff($args['<firstFile>'], $args['<secondFile>'], $args['--format']));
 
 

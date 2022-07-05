@@ -2,23 +2,28 @@
 
 namespace Differ\Tests;
 
-use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use function Differ\Differ\genDiff;
 
 class DifferTest extends TestCase
 {
+    private string $path = __DIR__ . '/fixtures/';
+
+    private function getFilePath($name)
+    {
+        return $this->path . $name;
+    }
+
     public function testGenDiff()
     {
-        $result1 = join("\n", ["{",
-            "  - follow: false",
-            "    host: hexlet.io",
-            "  - proxy: 123.234.53.22",
-            "  - timeout: 50",
-            "  + timeout: 20",
-            "  + verbose: true",
-            "}"]) . "\n";
-        $this->assertEquals($result1, genDiff('file1.json', 'file2.json'));
-        $this->assertEquals($result1, genDiff('file1.yaml', 'file2.yaml'));
+        $firstPathJson = $this->getFilePath('file1.json');
+        $secondPathJson = $this->getFilePath('file2.json');
+        $firstPathYaml = $this->getFilePath('file1.yaml');
+        $secondPathYaml = $this->getFilePath('file2.yaml');
+        $expectedStylish = trim(file_get_contents($this->getFilePath('resultStylish')));
+        $this->assertEquals($expectedStylish, genDiff($firstPathJson, $secondPathJson, 'stylish'));
+        $this->assertEquals($expectedStylish, genDiff($firstPathJson, $secondPathJson));
+        $this->assertEquals($expectedStylish, genDiff($firstPathYaml, $secondPathYaml, 'stylish'));
+        $this->assertEquals($expectedStylish, genDiff($firstPathYaml, $secondPathYaml));
     }
 }
