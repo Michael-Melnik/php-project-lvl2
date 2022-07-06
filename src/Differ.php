@@ -9,9 +9,8 @@ function genDiff(string $fileName1, string $fileName2, string $format = 'stylish
 {
     $dataFile1 = parse($fileName1);
     $dataFile2 = parse($fileName2);
-    $data = compare($dataFile1, $dataFile2);
-    $a =  formatSelection($data, $format);
-    return $a;
+    $diff = compare($dataFile1, $dataFile2);
+    return formatSelection($diff, $format);
 }
 
 function compare($data1, $data2): array
