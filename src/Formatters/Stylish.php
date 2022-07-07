@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters\Stylish;
 
-function format($tree, $depth = 0, $spacesCount = 4): string
+function format(array $tree, int $depth = 0, int $spacesCount = 4): string
 {
     $indent = str_repeat(' ', $spacesCount * $depth);
     $lines = array_map(function ($item) use ($indent, $depth, $spacesCount): string {
@@ -31,7 +31,7 @@ function format($tree, $depth = 0, $spacesCount = 4): string
     return implode("\n", ["{", ...$lines, "{$indent}}"]);
 }
 
-function stringify($value, $depth, $spaceCount)
+function stringify($value, int $depth, int $spaceCount)
 {
     if (is_object($value)) {
         $value = (array)$value;

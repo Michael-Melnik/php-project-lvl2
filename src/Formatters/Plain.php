@@ -4,13 +4,13 @@ namespace Differ\Formatters\Plain;
 
 use function Functional\flatten;
 
-function format($tree)
+function format(array $tree): string
 {
     $plain = stringify($tree);
     return implode("\n", flatten($plain));
 }
 
-function stringify($tree, $path = ''): array
+function stringify(array $tree, string $path = ''): array
 {
     return array_map(function ($item) use ($path) {
         $key = $item['key'];

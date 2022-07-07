@@ -13,7 +13,7 @@ function genDiff(string $fileName1, string $fileName2, string $format = 'stylish
     return formatSelection($diff, $format);
 }
 
-function compare($data1, $data2): array
+function compare(object $data1, object $data2): array
 {
     $data1 = (array)$data1;
     $data2 = (array)$data2;
