@@ -36,7 +36,7 @@ function format(array $tree, int $depth = 0, int $spacesCount = 4): string
 function stringify($value, int $depth, int $spaceCount)
 {
     if (is_object($value)) {
-       $value = objectToArray($value);
+        $value = objectToArray($value);
     }
     if (!is_array($value)) {
         return toString($value);
