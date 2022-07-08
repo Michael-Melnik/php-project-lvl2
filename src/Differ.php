@@ -5,7 +5,7 @@ namespace Differ\Differ;
 use function Differ\Formatters\formatSelection;
 use function Differ\Parsers\parse;
 
-function genDiff(string $fileName1, string $fileName2, string $format = 'stylish')
+function genDiff(string $fileName1, string $fileName2, string $format = 'stylish'): string
 {
     $dataFile1 = parse($fileName1);
     $dataFile2 = parse($fileName2);
@@ -15,8 +15,8 @@ function genDiff(string $fileName1, string $fileName2, string $format = 'stylish
 
 function compare(object $data1, object $data2): array
 {
-    $data1 = objectToArray($data1);
-    $data2 = objectToArray($data2);
+    $data1 = get_object_vars($data1);
+    $data2 = get_object_vars($data2);
     $keys = array_unique([...array_keys($data1), ...array_keys($data2)]);
     $keys = \Functional\sort($keys, fn($a, $b) => strcmp($a, $b));
     $tree = array_map(function ($key) use ($data1, $data2) {
@@ -56,12 +56,4 @@ function compare(object $data1, object $data2): array
         }
     }, $keys);
     return $tree;
-}
-function objectToArray(object $data): array
-{
-    $result = [];
-    foreach ($data as $key => $value) {
-        $result[$key] = $value;
-    }
-    return $result;
 }

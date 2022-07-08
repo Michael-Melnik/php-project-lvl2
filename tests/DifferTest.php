@@ -10,12 +10,12 @@ class DifferTest extends TestCase
 {
     private string $path = __DIR__ . '/fixtures/';
 
-    private function getFilePath($name)
+    private function getFilePath(string $name): string
     {
         return $this->path . $name;
     }
 
-    public function testGenDiff()
+    public function testGenDiff(): void
     {
         $firstPathJson = $this->getFilePath('file1.json');
         $secondPathJson = $this->getFilePath('file2.json');

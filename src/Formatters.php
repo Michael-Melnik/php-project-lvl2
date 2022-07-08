@@ -6,7 +6,7 @@ use Differ\Formatters\Stylish;
 use Differ\Formatters\Plain;
 use Differ\Formatters\Json;
 
-function formatSelection(array $tree, string $format)
+function formatSelection(array $tree, string $format): string|false
 {
     switch ($format) {
         case 'stylish':

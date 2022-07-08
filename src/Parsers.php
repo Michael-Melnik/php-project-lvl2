@@ -4,7 +4,7 @@ namespace Differ\Parsers;
 
 use Symfony\Component\Yaml\Yaml;
 
-function parse(string $fileName)
+function parse(string $fileName): object
 {
     $extensionFile = pathinfo($fileName, PATHINFO_EXTENSION);
     switch ($extensionFile) {
@@ -20,7 +20,7 @@ function parse(string $fileName)
     }
 }
 
-function getDataFromAFile(string $fileName)
+function getDataFromAFile(string $fileName): string|false
 {
     $path1 = $fileName;
     $path2 = __DIR__ . "/../{$fileName}";

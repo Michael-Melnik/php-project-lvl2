@@ -2,8 +2,6 @@
 
 namespace Differ\Formatters\Stylish;
 
-use function Differ\Differ\objectToArray;
-
 function format(array $tree, int $depth = 0, int $spacesCount = 4): string
 {
     $indent = str_repeat(' ', $spacesCount * $depth);
@@ -36,7 +34,7 @@ function format(array $tree, int $depth = 0, int $spacesCount = 4): string
 function stringify($value, int $depth, int $spaceCount)
 {
     if (is_object($value)) {
-        $value = objectToArray($value);
+        $value = get_object_vars($value);
     }
     if (!is_array($value)) {
         return toString($value);
@@ -54,7 +52,7 @@ function stringify($value, int $depth, int $spaceCount)
     return $stringifyValue($value, $depth + 1);
 }
 
-function toString($value): string
+function toString(mixed $value): string
 {
     if ($value === null) {
         return 'null';
