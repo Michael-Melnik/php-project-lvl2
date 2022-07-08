@@ -13,12 +13,11 @@ function genDiff(string $fileName1, string $fileName2, string $format = 'stylish
     return formatSelection($diff, $format);
 }
 
-function compare(object $data1, object $data2): array
+function compare(array $data1, array $data2): array
 {
-    $data1 = get_object_vars($data1);
-    $data2 = get_object_vars($data2);
+//    $data1 = get_object_vars($object1);
+//    $data2 = get_object_vars($object2);
     $keys = array_unique([...array_keys($data1), ...array_keys($data2)]);
-    $keys = \Functional\sort($keys, fn($a, $b) => strcmp($a, $b));
     $tree = array_map(function ($key) use ($data1, $data2) {
         if (!array_key_exists($key, $data1)) {
             return [
@@ -33,7 +32,7 @@ function compare(object $data1, object $data2): array
                 'type' => 'removed'
             ];
         } else {
-            if (is_object($data1[$key]) && is_object($data2[$key])) {
+            if (is_array($data1[$key]) && is_array($data2[$key])) {
                 return [
                     'key' => $key,
                     'type' => 'parent',
@@ -54,6 +53,6 @@ function compare(object $data1, object $data2): array
                 ];
             }
         }
-    }, $keys);
+    }, \Functional\sort($keys, fn($a, $b) => strcmp($a, $b)));
     return $tree;
 }

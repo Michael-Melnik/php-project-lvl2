@@ -37,7 +37,7 @@ function stringify(array $tree, string $path = ''): array
 
 function toString(mixed $value): string
 {
-    if (is_object($value)) {
+    if (is_array($value)) {
         return '[complex value]';
     }
     if ($value === null) {

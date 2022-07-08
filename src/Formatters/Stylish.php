@@ -31,11 +31,9 @@ function format(array $tree, int $depth = 0, int $spacesCount = 4): string
     return implode("\n", ["{", ...$lines, "{$indent}}"]);
 }
 
-function stringify($value, int $depth, int $spaceCount)
+function stringify(mixed $value, int $depth, int $spaceCount): string
 {
-    if (is_object($value)) {
-        $value = get_object_vars($value);
-    }
+
     if (!is_array($value)) {
         return toString($value);
     }
