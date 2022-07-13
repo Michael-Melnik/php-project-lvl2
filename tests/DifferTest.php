@@ -14,23 +14,6 @@ class DifferTest extends TestCase
     {
         return $this->path . $name;
     }
-
-//    public function testGenDiff(): void
-//    {
-//        $firstPathJson = $this->getFilePath('file1.json');
-//        $secondPathJson = $this->getFilePath('file2.json');
-//        $firstPathYaml = $this->getFilePath('file1.yaml');
-//        $secondPathYaml = $this->getFilePath('file2.yaml');
-//        $expectedStylish = trim(file_get_contents($this->getFilePath('resultStylish')));
-//        $expectedPlain = trim(file_get_contents($this->getFilePath('resultPlain')));
-//        $expectedJson = trim(file_get_contents($this->getFilePath('resultJson')));
-//        $this->assertEquals($expectedStylish, genDiff($firstPathJson, $secondPathJson, 'stylish'));
-//        $this->assertEquals($expectedStylish, genDiff($firstPathJson, $secondPathJson));
-//        $this->assertEquals($expectedStylish, genDiff($firstPathYaml, $secondPathYaml, 'stylish'));
-//        $this->assertEquals($expectedStylish, genDiff($firstPathYaml, $secondPathYaml));
-//        $this->assertEquals($expectedPlain, genDiff($firstPathYaml, $secondPathYaml, 'plain'));
-//        $this->assertEquals($expectedJson, genDiff($firstPathJson, $secondPathJson, 'json'));
-//    }
     /**
      * @dataProvider formatProvider
      */
