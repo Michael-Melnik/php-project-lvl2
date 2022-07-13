@@ -16,5 +16,3 @@ function parse(string $data, string $extension): array
             throw new \Exception("Unknown extension: '{$extension}'!");
     }
 }
-
-
