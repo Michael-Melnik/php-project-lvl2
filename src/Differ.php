@@ -61,11 +61,11 @@ function getDataFromAFile(string $fileName): string
     $path2 = __DIR__ . "/../{$fileName}";
     if (file_exists($path1)) {
         return readFile($path1);
-    } elseif (file_exists($path2)) {
-        return readFile($path2);
-    } else {
-        throw new \Exception("File not found: {$fileName}!");
     }
+    if (file_exists($path2)) {
+        return readFile($path2);
+    }
+    throw new \Exception("File not found: {$fileName}!");
 }
 
 function readFile(string $path): string
@@ -76,6 +76,7 @@ function readFile(string $path): string
     }
     return $fileContent;
 }
+
 function getExtension(string $path): string
 {
     return pathinfo($path, PATHINFO_EXTENSION);

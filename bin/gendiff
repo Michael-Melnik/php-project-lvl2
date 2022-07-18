@@ -10,7 +10,7 @@ if (file_exists($autoloadPath1)) {
 } else {
     require_once $autoloadPath2;
 }
-use Differ\Differ;
+use function Differ\Differ\genDiff;
 
 $doc = <<<DOC
 
@@ -27,12 +27,12 @@ Options:
   --format <fmt>            Report format [default: stylish]
 DOC;
 
-$params = array(
-    'help'=>true,
-    'version'=>'Generate diff 2.0',
-);
+$params = [
+    'help' => true,
+    'version' => 'Generate diff 2.0',
+];
 
 $args = Docopt::handle($doc, $params);
-;print_r(Differ\genDiff($args['<firstFile>'], $args['<secondFile>'], $args['--format']));
+print_r(genDiff($args['<firstFile>'], $args['<secondFile>'], $args['--format']));
 
 

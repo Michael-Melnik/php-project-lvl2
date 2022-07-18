@@ -33,7 +33,6 @@ function format(array $tree, int $depth = 0, int $spacesCount = 4): string
 
 function stringify(mixed $value, int $depth, int $spaceCount): string
 {
-
     if (!is_array($value)) {
         return toString($value);
     }
